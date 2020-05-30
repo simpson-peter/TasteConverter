@@ -5,11 +5,27 @@ void main() {
   runApp(MyApp());
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => _MyAppState();
+}
+
+class _MyAppState extends State<MyApp> {
+  void getPrintableData() async {
+    List<Text> result = await getData();
+    print(result);
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    print('Call 1 Here');
+    getPrintableData();
+  }
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    getData();
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -17,6 +33,7 @@ class MyApp extends StatelessWidget {
             'Taste Converter',
           ),
         ),
+        body: Column(),
       ),
     );
   }
