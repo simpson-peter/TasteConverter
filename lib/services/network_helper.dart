@@ -13,7 +13,7 @@ class NetworkHelper {
 
     if (response.statusCode == 200) {
       var readData = jsonDecode(response.body)['Similar']['Results'];
-      print('in NH, data = ' + readData[0]['Name']);
+      debugPrint('in NH, data = ' + readData[0]['Name']);
       return readData[0]['Name'];
     } else {
       print(response.statusCode);

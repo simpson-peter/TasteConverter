@@ -16,13 +16,12 @@ class _MyAppState extends State<MyApp> {
   void getRecData() async {
     NetworkHelper netHelper = NetworkHelper(names: 'pulp+fiction');
     recData = await netHelper.getData();
-    print('in gRD(), data recieved: ' + recData);
+    debugPrint('in gRD(), data recieved: ' + recData);
   }
 
   @override
   void initState() {
     super.initState();
-    print('Call 1 Here');
     getRecData();
   }
 
