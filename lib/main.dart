@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tasteconverter/services/network_test.dart';
+import 'package:tasteconverter/services/network_helper.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,16 +11,19 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  void getPrintableData() async {
-    List<Text> result = await getData();
-    print(result);
+  var recData;
+
+  void getRecData() async {
+    NetworkHelper netHelper = NetworkHelper(names: 'pulp+fiction');
+    recData = await netHelper.getData();
+    print('in gRD(), data recieved: ' + recData);
   }
 
   @override
   void initState() {
     super.initState();
     print('Call 1 Here');
-    getPrintableData();
+    getRecData();
   }
 
   // This widget is the root of your application.
@@ -33,7 +36,7 @@ class _MyAppState extends State<MyApp> {
             'Taste Converter',
           ),
         ),
-        body: Column(),
+        body: Text(recData ?? 'await'),
       ),
     );
   }
