@@ -15,7 +15,10 @@ class _MyAppState extends State<MyApp> {
 
   void getRecData() async {
     NetworkHelper netHelper = NetworkHelper(names: 'pulp+fiction');
-    recData = await netHelper.getData();
+    var newData = await netHelper.getData();
+    setState(() {
+      recData = newData;
+    });
     debugPrint('in gRD(), data recieved: ' + recData);
   }
 
